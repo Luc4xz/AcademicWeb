@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Halo | Chengran Xu</title>
+    <link rel="icon" type="image/png" href="../assets/icons/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="nav-name" href="../index.html#home">Chengran Xu</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="../course-review.html">Course Review</a>
+          <a href="../photo-collection.html">Photo Collection</a>
+          <a href="../blog.html">Blog</a>
+          <a class="nav-cta" href="../index.html#home">Home</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="project-detail-hero">
+        <div class="container detail-grid">
+          <div>
+            <a class="back-link" href="../index.html#projects">Back to projects</a>
+            <h1>Urban Halo</h1>
+            <p>
+              A self-guided drone system designed to enhance traffic surveillance and emergency response in urban
+              environments.
+            </p>
+          </div>
+          <img src="../assets/images/homepage/project2.png" alt="Urban Halo" />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow prose">
+          <p>
+            In most cities today, traffic accidents create a chain reaction of problems far beyond the collision itself.
+            Congestion spreads through connected intersections, emergency vehicles become trapped inside traffic,
+            witnesses often provide incomplete information, and police officers frequently arrive with limited
+            understanding of the actual severity of the scene.
+          </p>
+          <p>
+            Urban Halo proposes an AI-powered autonomous traffic drone system embedded directly into city
+            infrastructure. Rather than functioning as a traditional surveillance drone or manually controlled police
+            tool, the system is designed as a distributed first-response network capable of reacting to traffic accidents
+            within seconds after detection.
+          </p>
+          <p>
+            Drones are stored inside modified traffic lights or urban utility structures positioned across the city.
+            Every traffic-light station functions as a localized launch node connected to a citywide AI coordination
+            network. When an accident is detected, the nearest available drone automatically launches and navigates
+            toward the incident location.
+          </p>
+          <p>
+            The drone collects visual, spatial, and environmental information in real time. Computer vision models
+            identify vehicles, pedestrians, road obstacles, damaged structures, smoke, fire, traffic density, and lane
+            blockage conditions. Structured observations then enter a severity-scoring and LLM-based reasoning layer to
+            support emergency dispatch and responder coordination.
+          </p>
+          <p>
+            The project reframes emergency response from reactive arrival to predictive situational awareness, using
+            autonomous infrastructure to bridge the information gap between the accident scene and human responders.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
