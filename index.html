@@ -15,6 +15,17 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem("theme");
+          var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme || systemTheme;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      }());
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -34,6 +45,7 @@
           <a href="#projects">Projects</a>
           <a href="#misc">Misc</a>
           <a class="nav-cta" href="#contact">Contact</a>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
         </div>
       </nav>
     </header>
@@ -48,11 +60,34 @@
             <p class="affiliation">CS &amp; IS<br />University of Wisconsin-Madison</p>
             
             <div class="profile-links" aria-label="Social and contact links">
-              <a href="mailto:xuchengran2004@gmail.com">Email</a>
-              <a href="https://github.com/Luc4xz" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Scholar</a>
-              <a href="https://www.linkedin.com/in/cxu429" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://x.com/Lucasxuors0" target="_blank" rel="noopener noreferrer">X</a>
+              <span class="profile-link-item">
+                <img class="profile-icon" src="assets/icons/location-dot-solid.svg" alt="" aria-hidden="true" />
+                <span>Madison, Wisconsin</span>
+              </span>
+              <span class="profile-link-item">
+                <img class="profile-icon" src="assets/icons/university-solid.svg" alt="" aria-hidden="true" />
+                <span>University of Wisconsin-Madison</span>
+              </span>
+              <a class="profile-link-item" href="mailto:xuchengran2004@gmail.com">
+                <img class="profile-icon" src="assets/icons/envelope-solid-full.svg" alt="" aria-hidden="true" />
+                <span>Email</span>
+              </a>
+              <a class="profile-link-item" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="assets/icons/google-scholar-brands-solid-full.svg" alt="" aria-hidden="true" />
+                <span>Google Scholar</span>
+              </a>
+              <a class="profile-link-item" href="https://github.com/Luc4xz" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="assets/icons/github-brands-solid-full.svg" alt="" aria-hidden="true" />
+                <span>GitHub</span>
+              </a>
+              <a class="profile-link-item" href="https://www.linkedin.com/in/cxu429" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="assets/icons/linkedin-brands-solid-full.svg" alt="" aria-hidden="true" />
+                <span>LinkedIn</span>
+              </a>
+              <a class="profile-link-item" href="https://x.com/Lucasxuors0" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="assets/icons/x-twitter-brands-solid-full.svg" alt="" aria-hidden="true" />
+                <span>X</span>
+              </a>
             </div>
           </aside>
 

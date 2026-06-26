@@ -11,6 +11,17 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem("theme");
+          var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme || systemTheme;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      }());
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -28,6 +39,7 @@
           <a href="photo-collection.html">Collection</a>
           <a href="blog.html">Blog</a>
           <a class="nav-cta" href="index.html#home">Home</a>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
         </div>
       </nav>
     </header>
