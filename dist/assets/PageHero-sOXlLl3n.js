@@ -1,0 +1,1 @@
+import{j as e}from"./index-BEBtP_ey.js";function a({title:s,children:r}){return e.jsx("section",{className:"page-hero",children:e.jsxs("div",{className:"container",children:[e.jsx("h1",{children:s}),e.jsx("p",{children:r})]})})}export{a as P};

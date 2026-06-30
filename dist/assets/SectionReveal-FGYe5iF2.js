@@ -1,0 +1,1 @@
+import{j as e,m as o}from"./index-BEBtP_ey.js";function a({children:i,className:t}){return e.jsx(o.div,{className:t,initial:{opacity:0,y:18},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"-80px"},transition:{duration:.45,ease:"easeOut"},children:i})}export{a as S};
