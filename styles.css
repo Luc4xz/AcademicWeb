@@ -68,6 +68,14 @@ a:hover {
   color: var(--accent-2);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -582,6 +590,18 @@ a.profile-link-item:hover {
   object-fit: cover;
 }
 
+.visitor-map-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .visitor-map-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .visitor-map-dark {
+  display: block;
+}
+
 .copyright {
   width: min(100% - 48px, var(--max-width));
   margin: 34px auto 0;
@@ -715,6 +735,248 @@ a.profile-link-item:hover {
   grid-template-columns: 1fr;
 }
 
+.status-note {
+  margin: 18px 0;
+  padding: 14px 16px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.status-note.error {
+  color: var(--accent);
+}
+
+.split-list,
+.skill-groups,
+.timeline-list {
+  display: grid;
+  gap: 18px;
+}
+
+.mini-panel,
+.timeline-item,
+.repo-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.mini-panel h3,
+.timeline-item h3,
+.repo-card h3 {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 1.42rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.skill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.skill-cloud.compact {
+  margin-top: 14px;
+}
+
+.skill-cloud span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 10px 4px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--surface);
+  font-size: 0.86rem;
+  line-height: 1.25;
+}
+
+.project-tools {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.search-control input,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+}
+
+.search-control input {
+  min-height: 42px;
+  padding: 8px 12px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-row button {
+  min-height: 32px;
+  padding: 4px 10px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.filter-row button:hover,
+.filter-row button.active {
+  color: #ffffff;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.journey-viz {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.journey-viz svg {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  cursor: grab;
+}
+
+.journey-viz svg:active {
+  cursor: grabbing;
+}
+
+.journey-axis path,
+.journey-axis line {
+  stroke: var(--line);
+}
+
+.journey-axis text {
+  fill: var(--muted);
+  font-family: var(--font-sans);
+}
+
+.viz-tooltip {
+  position: absolute;
+  z-index: 2;
+  max-width: 220px;
+  padding: 7px 9px;
+  color: var(--surface);
+  background: var(--text);
+  border-radius: 2px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.repo-card h3 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.repo-card p {
+  margin: 10px 0 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.repo-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.repo-card dt {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.repo-card dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 8px 11px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form small {
+  color: var(--accent);
+}
+
+.contact-form .button {
+  width: max-content;
+  cursor: pointer;
+}
+
+.contact-form .button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.form-status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.form-status.error {
+  color: var(--accent);
+}
+
+.form-status.success {
+  color: var(--text);
+}
+
 .developing-note {
   min-height: 260px;
   display: flex;
@@ -769,7 +1031,8 @@ a.profile-link-item:hover {
   .project-card,
   .footer-grid,
   .detail-grid,
-  .course-card {
+  .course-card,
+  .repo-grid {
     grid-template-columns: 1fr;
   }
 
@@ -889,5 +1152,13 @@ a.profile-link-item:hover {
 
   .photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .repo-card dl {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-viz svg {
+    min-height: 360px;
   }
 }
