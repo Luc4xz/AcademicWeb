@@ -1,0 +1,281 @@
+.analytics-page {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.analytics-shell {
+  width: min(100% - 48px, 1180px);
+  margin: 0 auto;
+  padding: 56px 0 80px;
+}
+
+.analytics-header,
+.dashboard-toolbar,
+.analytics-login,
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.analytics-header {
+  margin-bottom: 40px;
+}
+
+.analytics-header h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.analytics-header p,
+.analytics-login p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.analytics-eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.analytics-login,
+.analytics-panel,
+.metric-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.analytics-login {
+  padding: 30px;
+}
+
+.analytics-login h2,
+.dashboard-toolbar h2,
+.analytics-panel h3 {
+  margin: 0;
+}
+
+.analytics-login form {
+  min-width: min(100%, 420px);
+}
+
+.analytics-login label,
+.dashboard-toolbar label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.token-entry {
+  display: flex;
+  gap: 10px;
+}
+
+.token-entry input,
+.dashboard-toolbar select {
+  min-height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  color: var(--text);
+  background: var(--background);
+  font: inherit;
+}
+
+.token-entry input {
+  min-width: 0;
+  flex: 1;
+  padding: 0 12px;
+}
+
+.dashboard-toolbar {
+  margin-bottom: 22px;
+}
+
+.dashboard-toolbar select {
+  min-width: 160px;
+  padding: 0 38px 0 12px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.metric-card {
+  padding: 24px;
+}
+
+.metric-card p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.metric-card strong {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.analytics-panel {
+  padding: 24px;
+}
+
+.traffic-panel {
+  margin-top: 16px;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.chart-legend span {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+}
+
+.traffic-chart {
+  display: flex;
+  height: 210px;
+  margin-top: 28px;
+  gap: clamp(2px, 0.5vw, 8px);
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+}
+
+.traffic-bar {
+  position: relative;
+  min-width: 2px;
+  height: max(2px, var(--bar-height));
+  flex: 1;
+  background: var(--accent);
+  opacity: 0.76;
+  transition: opacity 160ms ease;
+}
+
+.traffic-bar:hover,
+.traffic-bar:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.traffic-chart.dense {
+  gap: 0;
+}
+
+.traffic-chart.dense .traffic-bar {
+  min-width: 0;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.breakdown-list {
+  display: grid;
+  margin-top: 22px;
+  gap: 15px;
+}
+
+.breakdown-row {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.65fr) 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+
+.breakdown-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.breakdown-track {
+  height: 6px;
+  overflow: hidden;
+  background: var(--accent-soft);
+}
+
+.breakdown-fill {
+  display: block;
+  width: var(--fill-width);
+  height: 100%;
+  background: var(--accent);
+}
+
+.breakdown-value,
+.empty-breakdown,
+.analytics-status {
+  color: var(--muted);
+}
+
+.analytics-status {
+  min-height: 24px;
+  margin: 18px 0 0;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .analytics-header,
+  .analytics-login {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .analytics-login form {
+    width: 100%;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .analytics-shell {
+    width: min(100% - 32px, 1180px);
+    padding-top: 32px;
+  }
+
+  .analytics-header .button {
+    width: 100%;
+  }
+
+  .dashboard-toolbar,
+  .token-entry {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dashboard-toolbar select {
+    width: 100%;
+  }
+
+  .breakdown-row {
+    grid-template-columns: minmax(72px, 0.8fr) 1fr auto;
+    gap: 8px;
+  }
+}

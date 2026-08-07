@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Visitor Analytics | Chengran Xu</title>
+    <link rel="icon" type="image/png" href="assets/icons/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&amp;family=Source+Sans+3:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="analytics.css" />
+  </head>
+  <body class="analytics-page">
+    <main class="analytics-shell">
+      <header class="analytics-header">
+        <div>
+          <p class="analytics-eyebrow">Private dashboard</p>
+          <h1>Visitor analytics</h1>
+          <p>Anonymous, first-party traffic trends for this portfolio.</p>
+        </div>
+        <a class="button secondary" href="index.html">Back to site</a>
+      </header>
+
+      <section class="analytics-login" id="analytics-login" aria-labelledby="login-title">
+        <div>
+          <h2 id="login-title">Unlock analytics</h2>
+          <p>The token is sent only to your analytics API and is not saved in the browser.</p>
+        </div>
+        <form id="token-form">
+          <label for="admin-token">Admin token</label>
+          <div class="token-entry">
+            <input id="admin-token" name="token" type="password" autocomplete="current-password" required />
+            <button class="button primary" type="submit">View dashboard</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="analytics-dashboard" id="analytics-dashboard" hidden aria-label="Visitor analytics dashboard">
+        <div class="dashboard-toolbar">
+          <div>
+            <p class="analytics-eyebrow">Overview</p>
+            <h2 id="range-title">Last 30 days</h2>
+          </div>
+          <label>
+            Date range
+            <select id="date-range">
+              <option value="7">Last 7 days</option>
+              <option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="365">Last year</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <p>Visitors</p>
+            <strong id="visitor-total">—</strong>
+          </article>
+          <article class="metric-card">
+            <p>Page views</p>
+            <strong id="page-view-total">—</strong>
+          </article>
+          <article class="metric-card">
+            <p>Views per visitor</p>
+            <strong id="views-per-visitor">—</strong>
+          </article>
+        </div>
+
+        <article class="analytics-panel traffic-panel">
+          <div class="panel-heading">
+            <h3>Daily traffic</h3>
+            <div class="chart-legend" aria-hidden="true"><span></span> Page views</div>
+          </div>
+          <div class="traffic-chart" id="traffic-chart" role="img" aria-label="Daily page views chart"></div>
+        </article>
+
+        <div class="breakdown-grid">
+          <article class="analytics-panel">
+            <h3>Visitor countries</h3>
+            <div class="breakdown-list" id="country-list"></div>
+          </article>
+          <article class="analytics-panel">
+            <h3>Devices</h3>
+            <div class="breakdown-list" id="device-list"></div>
+          </article>
+          <article class="analytics-panel">
+            <h3>Browsers</h3>
+            <div class="breakdown-list" id="browser-list"></div>
+          </article>
+          <article class="analytics-panel">
+            <h3>Top pages</h3>
+            <div class="breakdown-list" id="page-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <p class="analytics-status" id="analytics-status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="analytics-dashboard.js"></script>
+  </body>
+</html>
