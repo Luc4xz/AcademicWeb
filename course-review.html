@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap"
       rel="stylesheet"
     />
     <script>
@@ -55,9 +55,111 @@
         </div>
       </section>
 
-      <section class="section subtle">
-        <div class="container course-list">
-          <article class="course-card">
+      <section class="section course-review-section">
+        <div class="container course-guide-container">
+          <nav class="course-toc" aria-labelledby="course-table-title">
+            <h2 id="course-table-title">Table of Contents</h2>
+            <div class="course-table-wrap" tabindex="0">
+              <table class="course-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Course Number</th>
+                    <th scope="col">Course Title</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Instructor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="course-table-row">
+                    <td>COMP SCI 200</td>
+                    <td><a href="#comp-sci-200">Programming I</a></td>
+                    <td>Spring 26</td>
+                    <td>Andrew Kuemmel</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>ECE 252</td>
+                    <td><a href="#ece-252">Introduction to Computer Engineering</a></td>
+                    <td>Spring 26</td>
+                    <td>Shayne Wadle</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>ESL 116</td>
+                    <td><a href="#esl-116">Academic Reading and Vocabulary Skills</a></td>
+                    <td>Spring 26</td>
+                    <td>Professor Alejandro Azocar</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>AF 100</td>
+                    <td><a href="#af-100">Introduction to African Cultural Expression</a></td>
+                    <td>Spring 26</td>
+                    <td>Xi Jin</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>SW 100</td>
+                    <td><a href="#sw-100">So You Want To Change The World?</a></td>
+                    <td>Spring 26</td>
+                    <td>Yolanda Shelton-Morris</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>COMP SCI 300</td>
+                    <td><a href="#comp-sci-300">Programming II</a></td>
+                    <td>Summer 26</td>
+                    <td>Professor Jiazhen Zhou</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>MATH 54 @ Berkeley</td>
+                    <td><a href="#math-54">Linear Algebra and Differential Equations</a></td>
+                    <td>Summer 26</td>
+                    <td>Xzavier Herbert</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>NUSCTX 10 @ Berkeley</td>
+                    <td><a href="#nusctx-10">Introduction to Human Nutrition</a></td>
+                    <td>Summer 26</td>
+                    <td>Ashley Reaver</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>COMP SCI 400</td>
+                    <td>Programming III</td>
+                    <td>Fall 26</td>
+                    <td>Florian Heimerl</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>COMP SCI 354</td>
+                    <td>Machine Organization and Programming</td>
+                    <td>Fall 26</td>
+                    <td>Gary Dahl</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>ESL 118</td>
+                    <td>Academic Writing II</td>
+                    <td>Fall 26</td>
+                    <td>TBD</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>BIOCHEM 104</td>
+                    <td>Molecules to Life and the Nature of Science</td>
+                    <td>Fall 26</td>
+                    <td>TBD</td>
+                  </tr>
+                  <tr class="course-table-row">
+                    <td>ASTRON 103</td>
+                    <td>The Evolving Universe: Stars, Galaxies, and Cosmology</td>
+                    <td>Fall 26</td>
+                    <td>TBD</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="course-table-controls" aria-label="Table pagination" hidden>
+              <button class="course-table-control" id="course-table-prev" type="button">Prev</button>
+              <div class="course-table-pages" id="course-table-pages"></div>
+              <button class="course-table-control" id="course-table-next" type="button">Next</button>
+            </div>
+          </nav>
+
+          <div class="course-list">
+          <article class="course-card" id="comp-sci-200">
             <img src="assets/images/course-review/COMP SCI 200.jpg" alt="COMP SCI 200" />
             <div>
               <h2>COMP SCI 200: Programming I</h2>
@@ -70,7 +172,7 @@
               </p>
             </div>
           </article>
-          <article class="course-card">
+          <article class="course-card" id="ece-252">
             <img src="assets/images/course-review/ECE 252.jpg" alt="ECE 252" />
             <div>
               <h2>ECE 252: Introduction to Computer Engineering</h2>
@@ -83,7 +185,7 @@
               </p>
             </div>
           </article>
-          <article class="course-card">
+          <article class="course-card" id="esl-116">
             <img src="assets/images/course-review/ESL 116.jpg" alt="ESL 116" />
             <div>
               <h2>ESL 116: Academic Reading and Vocabulary Skills</h2>
@@ -95,7 +197,7 @@
               </p>
             </div>
           </article>
-          <article class="course-card">
+          <article class="course-card" id="af-100">
             <img src="assets/images/course-review/AF 100.png" alt="AF 100" />
             <div>
               <h2>AF 100: Introduction to African Cultural Expression</h2>
@@ -107,7 +209,7 @@
               </p>
             </div>
           </article>
-          <article class="course-card">
+          <article class="course-card" id="sw-100">
             <img src="assets/images/course-review/SW 100.jpg" alt="SW 100" />
             <div>
               <h2>SW 100: So You Want To Change The World?</h2>
@@ -119,31 +221,68 @@
               </p>
             </div>
           </article>
-          <article class="course-card placeholder-card">
+          <article class="course-card placeholder-card" id="comp-sci-300">
             <div>
               <h2>COMP SCI 300: Programming II</h2>
               <p class="byline">Instructor: Professor Jiazhen Zhou</p>
               <p>Notes coming soon.</p>
             </div>
           </article>
-          <article class="course-card placeholder-card">
+          <article class="course-card placeholder-card" id="math-54">
             <div>
               <h2>MATH 54 @ Berkeley: Linear Algebra and Differential Equations</h2>
-              <p class="byline">TBD</p>
+              <p class="byline">Instructor: Xzavier Herbert</p>
               <p>Notes coming soon.</p>
             </div>
           </article>
-          <article class="course-card placeholder-card">
+          <article class="course-card placeholder-card" id="nusctx-10">
             <div>
               <h2>NUSCTX 10 @ Berkeley: Introduction to Human Nutrition</h2>
+              <p class="byline">Instructor: Ashley Reaver</p>
+              <p>Notes coming soon.</p>
+            </div>
+          </article>
+          <article class="course-card placeholder-card" id="nusctx-10">
+            <div>
+              <h2>COMP SCI 400: Programming III</h2>
+              <p class="byline">Instructor: Florian Heimerl</p>
+              <p>Notes coming soon.</p>
+            </div>
+          </article>
+          <article class="course-card placeholder-card" id="nusctx-10">
+            <div>
+              <h2>COMP SCI 354: Machine Organization and Programming</h2>
+              <p class="byline">Instructor: Gary Dahl</p>
+              <p>Notes coming soon.</p>
+            </div>
+          </article>
+          <article class="course-card placeholder-card" id="nusctx-10">
+            <div>
+              <h2>ESL 118: Academic Writing II</h2>
               <p class="byline">TBD</p>
               <p>Notes coming soon.</p>
             </div>
           </article>
+          <article class="course-card placeholder-card" id="nusctx-10">
+            <div>
+              <h2>BIOCHEM 104: Molecules to Life and the Nature of Science</h2>
+              <p class="byline">TBD</p>
+              <p>Notes coming soon.</p>
+            </div>
+          </article>
+          <article class="course-card placeholder-card" id="nusctx-10">
+            <div>
+              <h2>ASTRON 103: The Evolving Universe: Stars, Galaxies, and Cosmology</h2>
+              <p class="byline">TBD</p>
+              <p>Notes coming soon.</p>
+            </div>
+          </article>
+          </div>
         </div>
       </section>
     </main>
 
     <script src="script.js"></script>
+    <script type="module" src="analytics.js"></script>
   </body>
 </html>
