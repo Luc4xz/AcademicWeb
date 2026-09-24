@@ -3,12 +3,15 @@ const navLinks = document.querySelector(".nav-links");
 const navItems = document.querySelectorAll(".nav-links a[href^='#']");
 const sections = document.querySelectorAll("main section[id], footer[id]");
 const themeToggle = document.querySelector(".theme-toggle");
-let isThemeTransitioning = false;
 
 function getPreferredTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark" || savedTheme === "light") {
-    return savedTheme;
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      return savedTheme;
+    }
+  } catch {
+    // Theme switching still works when browser storage is unavailable.
   }
 
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -28,6 +31,8 @@ function setTheme(theme) {
 }
 
 setTheme(getPreferredTheme());
+let requestedTheme = document.documentElement.dataset.theme;
+let isThemeTransitioning = false;
 
 function closeNavigation() {
   navLinks.classList.remove("open");
@@ -41,57 +46,59 @@ navToggle.addEventListener("click", () => {
   document.body.classList.toggle("nav-open", isOpen);
 });
 
-themeToggle?.addEventListener("click", (event) => {
-  if (isThemeTransitioning) {
-    return;
+themeToggle?.addEventListener("click", async () => {
+  requestedTheme = requestedTheme === "dark" ? "light" : "dark";
+  try {
+    localStorage.setItem("theme", requestedTheme);
+  } catch {
+    // Saving a preference is optional; applying it is not.
   }
 
-  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  const applyTheme = () => {
-    localStorage.setItem("theme", nextTheme);
-    setTheme(nextTheme);
-  };
-
-  if (!document.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    applyTheme();
-    return;
-  }
-
-  const toggleBounds = event.currentTarget.getBoundingClientRect();
-  const originX = toggleBounds.left + toggleBounds.width / 2;
-  const originY = toggleBounds.top + toggleBounds.height / 2;
-  const revealRadius = Math.hypot(
-    Math.max(originX, window.innerWidth - originX),
-    Math.max(originY, window.innerHeight - originY)
-  );
-
+  // Finish the current circle before revealing the latest requested theme.
+  if (isThemeTransitioning) return;
   isThemeTransitioning = true;
-  document.documentElement.classList.add("theme-transition");
+  const root = document.documentElement;
 
-  const transition = document.startViewTransition(applyTheme);
+  try {
+    while (root.dataset.theme !== requestedTheme) {
+      const nextTheme = requestedTheme;
+      if (!document.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setTheme(nextTheme);
+        continue;
+      }
 
-  transition.ready
-    .then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0 at ${originX}px ${originY}px)`,
-            `circle(${revealRadius}px at ${originX}px ${originY}px)`
-          ]
-        },
-        {
-          duration: 800,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-          pseudoElement: "::view-transition-new(root)"
-        }
-      );
-    })
-    .catch(() => {});
+      const bounds = themeToggle.getBoundingClientRect();
+      const x = bounds.left + bounds.width / 2;
+      const y = bounds.top + bounds.height / 2;
+      const radius = Math.ceil(Math.hypot(
+        Math.max(x, root.clientWidth - x),
+        Math.max(y, root.clientHeight - y)
+      )) + 2;
+      root.style.setProperty("--theme-transition-x", `${x}px`);
+      root.style.setProperty("--theme-transition-y", `${y}px`);
+      root.style.setProperty("--theme-transition-radius", `${radius}px`);
+      root.classList.add("theme-transition");
 
-  transition.finished.finally(() => {
+      let transition;
+      try {
+        transition = document.startViewTransition(() => setTheme(nextTheme));
+        // CSS owns the entire reveal, including its first and last frames.
+        await transition.ready;
+        await transition.finished;
+      } catch {
+        transition?.skipTransition();
+        setTheme(nextTheme);
+      } finally {
+        if (transition) await transition.finished.catch(() => {});
+        root.classList.remove("theme-transition");
+        root.style.removeProperty("--theme-transition-x");
+        root.style.removeProperty("--theme-transition-y");
+        root.style.removeProperty("--theme-transition-radius");
+      }
+    }
+  } finally {
     isThemeTransitioning = false;
-    document.documentElement.classList.remove("theme-transition");
-  });
+  }
 });
 
 navItems.forEach((link) => {

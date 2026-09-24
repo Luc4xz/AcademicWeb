@@ -30,8 +30,10 @@
   --accent-soft: #2b1717;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+/* Keep both snapshots still; only the circular mask reveals the new theme. */
+:root.theme-transition::view-transition-group(root),
+:root.theme-transition::view-transition-old(root),
+:root.theme-transition::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
@@ -42,6 +44,35 @@
 
 :root.theme-transition::view-transition-new(root) {
   z-index: 2;
+  /* Start with the snapshot itself; let the browser control the whole reveal. */
+  animation: theme-circle-expand 650ms cubic-bezier(0.33, 0, 0.67, 1) both;
+  /* Chrome can mis-scale composited clip-paths on Retina displays. Keep the
+     snapshot mask on the normal paint path so its coordinates stay in CSS px. */
+  will-change: contents;
+}
+
+:root.theme-transition::view-transition-image-pair(root) {
+  isolation: isolate;
+}
+
+@keyframes theme-circle-expand {
+  from {
+    /* Keep a nonempty initial mask entirely inside the toggle. */
+    clip-path: circle(1px at var(--theme-transition-x) var(--theme-transition-y));
+  }
+  to {
+    clip-path: circle(var(--theme-transition-radius) at var(--theme-transition-x) var(--theme-transition-y));
+  }
+}
+
+:root.theme-transition::view-transition {
+  pointer-events: none;
+}
+
+:root.theme-transition *,
+:root.theme-transition *::before,
+:root.theme-transition *::after {
+  transition: none !important;
 }
 
 * {
@@ -156,6 +187,9 @@ a:hover {
 }
 
 .theme-toggle {
+  /* Keep both labels the same size so the navigation stays put. */
+  inline-size: 5.5em;
+  flex-shrink: 0;
   min-height: 30px;
   padding: 3px 11px 4px;
   border: 1px solid var(--line);
